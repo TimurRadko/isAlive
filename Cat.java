@@ -1,14 +1,9 @@
 package com.timurradko.itsAlive;
 
 public class Cat {
-    boolean isAlive;
+    private boolean isAlive;
 
-    boolean getIsAlive() {
+    public boolean getIsAlive() {
         return isAlive;
     }
-
-    public void setIsAlive(boolean iAlive) {
-        this.isAlive = iAlive;
-    }
-
 }

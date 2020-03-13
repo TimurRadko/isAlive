@@ -4,36 +4,26 @@ import java.util.Random;
 
 public class Box {
     private static Random random = new Random();
-    boolean opened = false;
+    private boolean opened = false;
+    public boolean catIsAlive;
 
-    Box(Cat cat) {
-        cat.isAlive = cat.getIsAlive();
+    public Box(Cat cat) {
+        this.catIsAlive = cat.getIsAlive();
     }
 
-    public static void main(String[] args) {
-        Cat cat = new Cat();
-        Box box = new Box(cat);
-        System.out.println("The probability that the cat is alive: " + box.catAliveProbability(cat) + " %");
-        System.out.print("Open the box: ");
-        box.openBox(cat);
-        box.catAliveProbability(cat);
-
-    }
-
-    void openBox(Cat cat) {
-        int i = random.nextInt(2);
+    void openBox() {
         opened = true;
-        if (i == 0) {
-            cat.isAlive = false;
+        if (getRandomVariety() == 0) {
+            this.catIsAlive = false;
         } else {
-            cat.isAlive = true;
+            this.catIsAlive = true;
         }
     }
 
-    int catAliveProbability (Cat cat) {
+    int catAliveProbability () {
         if (!opened) {
             return 50;
-        } else if (!cat.isAlive) {
+        } else if (!this.catIsAlive) {
             System.out.println("The probability that the cat is alive: 0 %");
             System.out.println("Sorry, Cat died");
             return 0;
@@ -42,5 +32,9 @@ public class Box {
             System.out.println("Congratulation, Cat is alive");
             return 100;
         }
+    }
+
+    private int getRandomVariety() {
+        return random.nextInt(2);
     }
 }
