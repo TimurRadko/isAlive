@@ -13,11 +13,7 @@ public class Box {
 
     void openBox() {
         opened = true;
-        if (getRandomVariety() == 0) {
-            this.catIsAlive = false;
-        } else {
-            this.catIsAlive = true;
-        }
+        this.catIsAlive = getRandomVariety() != 0;
     }
 
     int catAliveProbability () {
